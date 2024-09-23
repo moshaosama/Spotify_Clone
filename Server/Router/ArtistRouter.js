@@ -2,6 +2,7 @@ const express = require("express");
 const SpotifyController = require("../Controller/ArtistController");
 const SpotifyRouter = express.Router();
 const artistRouter = express.Router();
+const albumRouter = express.Router();
 
 SpotifyRouter.route("/").post(SpotifyController.getAccessToken);
 SpotifyRouter.route("/Artist/:Song").get(
@@ -10,5 +11,10 @@ SpotifyRouter.route("/Artist/:Song").get(
 );
 
 artistRouter.route("/").get(SpotifyController.getArtist);
+albumRouter
+  .route("/:id")
+  .get(SpotifyController.getAccessToken, SpotifyController.postAlbumToDb);
 
-module.exports = { SpotifyRouter, artistRouter };
+albumRouter.route("/").get(SpotifyController.getAlbum);
+
+module.exports = { SpotifyRouter, artistRouter, albumRouter };

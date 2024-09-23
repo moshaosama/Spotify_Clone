@@ -5,7 +5,11 @@ const cors = require("cors");
 const app = express();
 
 const { signUpRouter, loginRouter } = require("./Router/AuthRouter");
-const { artistRouter, SpotifyRouter } = require("./Router/ArtistRouter");
+const {
+  artistRouter,
+  SpotifyRouter,
+  albumRouter,
+} = require("./Router/ArtistRouter");
 
 //Middleware
 app.use(express.json());
@@ -17,6 +21,7 @@ app.use("/login", loginRouter);
 app.use("/signUp", signUpRouter);
 app.use("/accessToken", SpotifyRouter);
 app.use("/Artist", artistRouter);
+app.use("/Album", albumRouter);
 
 ////////////////////////////////////////////////////////////////
 mongoose
