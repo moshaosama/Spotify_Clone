@@ -1,0 +1,45 @@
+<div class="flex items-center justify-between m-3">
+  <div>
+    <img
+      src="https://i.pinimg.com/564x/90/14/f3/9014f3b5d37bd6ef52f1d5ce05ece630.jpg"
+      alt=""
+      class="w-12 cursor-pointer"
+      routerLink="/"
+    />
+  </div>
+  <div class="flex items-center">
+    <img src="round.png" alt="" class="w-8 cursor-pointer" />
+    <form class="mx-1">
+      <input
+        type="text"
+        placeholder="What do you want to play?"
+        class="bg-[#333333] max-sm:w-20 text-gray-600 w-96 h-8 rounded-2xl px-3 flex items-center"
+      />
+    </form>
+    <div></div>
+  </div>
+  <div>
+    @if (!user()) {
+    <nav>
+      <a
+        href=""
+        class="text-[#bbb] font-bold max-sm:mx-5 mx-8 hover:text-white transition-all duration-200"
+        >Sign up</a
+      >
+      <button
+        class="bg-white font-bold w-20 h-10 rounded-full"
+        routerLink="/login"
+      >
+        Login
+      </button>
+    </nav>
+    } @if (user()) {
+    <div class="flex items-center">
+      <h1 class="text-white mx-10">Hello {{ user().userName }}</h1>
+      <button class="bg-white w-20 h-10 rounded-full" (click)="onLogOut()">
+        LogOut
+      </button>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="w-72">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <p class="flex flex-col">
+      <label class="text-white font-bold my-2">Email or username</label>
+      <input
+        type="text"
+        placeholder="Email or username"
+        class="bg-transparent text-white border border-[#aaa] p-2 placeholder:text-[#aaa] rounded-lg hover:border-white"
+        name="Email"
+        formControlName="email"
+      />
+    </p>
+    @if (this.form.controls.email.invalid && this.form.controls.email.untouched
+    ) {
+    <p class="text-red-700">Please enter valid Email</p>
+    }
+    <p class="flex flex-col">
+      <label class="text-white font-bold my-2">Password</label>
+      <input
+        type="password"
+        placeholder="Password"
+        class="bg-transparent text-white border border-[#aaa] p-2 placeholder:text-[#aaa] rounded-lg hover:border-white"
+        name="Password"
+        formControlName="password"
+      />
+    </p>
+    @if (this.form.controls.password.invalid &&
+    this.form.controls.password.untouched ) {
+    <p class="text-red-700">Please enter valid Password</p>
+    }
+    <p>
+      <button
+        class="bg-green-600 w-72 my-5 rounded-full font-bold h-12 hover:bg-green-700"
+        [routerLink]="user ? '/' : '/login'"
+      >
+        Login
+      </button>
+    </p>
+    <div>
+      <h1
+        class="text-white font-bold underline text-center cursor-pointer hover:text-green-600"
+      >
+        Forget Your password?
+      </h1>
+      <h1 class="text-[#aaa] text-center text-sm my-10 font-bold">
+        Don't have an account?
+        <span
+          class="text-white font-bold underline text-center cursor-pointer hover:text-green-600"
+          >Sign up for Spotify</span
+        >
+      </h1>
+    </div>
+  </form>
+</div>

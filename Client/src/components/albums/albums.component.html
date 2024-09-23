@@ -1,0 +1,8 @@
+@for (albums of Albums; track albums) {
+<audio controls>
+  <source [src]="albums.preview_url" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+}
+
+<button (click)="onSubmit()">Mosha</button>

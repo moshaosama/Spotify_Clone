@@ -1,0 +1,36 @@
+<div>
+  <div>
+    <h1 class="text-white font-bold p-10 text-2xl">Popular artist</h1>
+  </div>
+  <div class="grid max-sm:grid-cols-2 grid-cols-8">
+    @for (artists of Artists; track artists) {
+    <div
+      class="mx-3 rounded-xl cursor-pointer hover:bg-[#121212] transition-all duration-200 py-3"
+      [routerLink]="'/Album/' + artists?.id"
+      (click)="onEnterAlbums(artists?.id!)"
+    >
+      <img
+        src="{{ artists?.images?.slice(0, 1)?.[0]?.url }}"
+        alt=""
+        class="max-w-36 max-h-36 max-sm:max-w-20 rounded-full m-auto"
+      />
+      <div class="mx-4 flex justify-between">
+        <div>
+          <h1 class="text-white font-bold">{{ artists?.name }}</h1>
+          <h1 class="text-[#aaa]">{{ artists?.type }}</h1>
+        </div>
+        <div>
+          <button
+            class="bg-green-500 max-w-15 max-h-15 flex justify-center items-center rounded-full -my-6"
+          >
+            <img src="/play.png" alt="" class="w-8" />
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <div>
+    <app-footer />
+  </div>
+</div>

@@ -1,0 +1,10 @@
+@if (!isLoginPage()) {
+<div>
+  <app-header />
+  <main>
+    <app-ylibrary />
+  </main>
+</div>
+} @if (isLoginPage()) {
+<router-outlet />
+}
