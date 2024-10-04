@@ -1,0 +1,47 @@
+<div>
+  <div class="flex items-center justify-between">
+    <div>
+      <h1
+        class="text-white font-bold hover:underline cursor-pointer p-10 text-xl"
+      >
+        Popular artist
+      </h1>
+    </div>
+    <div>
+      <a
+        class="text-[#999] hover:underline font-bold p-10 cursor-pointer"
+        routerLink="/Artists"
+        >Show all</a
+      >
+    </div>
+  </div>
+  <div class="grid max-sm:grid-cols-2 grid-cols-6">
+    @for (artist of Artist.slice(0,6); track artist) {
+    <div
+      class="mx-3 rounded-xl cursor-pointer hover:bg-[#121212] transition-all duration-200 py-3"
+      [routerLink]="'/Album/' + artist?.id"
+      (click)="onChangeDB(artist.id)"
+    >
+      <img
+        src="{{ artist?.images?.slice(0, 1)?.[0]?.url }}"
+        alt=""
+        class="max-w-48 max-h-48 rounded-full m-auto"
+      />
+      <div class="mx-4 flex justify-between">
+        <div>
+          <h1 class="text-white font-bold">{{ artist?.name }}</h1>
+          <h1 class="text-[#aaa]">{{ artist?.type }}</h1>
+        </div>
+        <div>
+          <button
+            class="bg-green-500 w-16 h-14 flex justify-center items-center rounded-full -my-6"
+          >
+            <img src="/play.png" alt="" class="w-10" />
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <hr />
+</div>

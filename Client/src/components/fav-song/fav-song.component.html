@@ -1,0 +1,46 @@
+@for (playlist of PlayList; track playlist?._id) {
+<app-header-album
+  [Image]="playlist?.Image!"
+  [Name]="playlist.Name"
+  [Popularity]="playlist.popularity"
+  Status="playlist"
+  [Description]="ResultWithSong + ' ' + 'Song'"
+/>
+} @for (favSong of favSong; track favSong) {
+<div class="flex my-5 mx-5">
+  <button
+    class="text-white w-[55pc] h-10"
+    (click)="onPlayMusic(favSong.preview_url)"
+  >
+    <div
+      class="flex justify-between items-center hover:bg-[#161616] rounded-lg p-[10px]"
+      (click)="setActive(favSong.id)"
+    >
+      <div
+        class="flex items-center gap-4"
+        [class.active]="Activated === favSong.id"
+        (click)="onClick()"
+      >
+        {{ favSong.id.slice(0, 1) }}
+        <img
+          [src]="favSong?.album?.images?.slice(0, 1)?.[0]?.url"
+          alt="album.png"
+          class="w-10 rounded-lg"
+        />
+        <h1
+          class="text-white hover:underline"
+          [class.active]="Activated === favSong.id"
+        >
+          {{ favSong.name }}
+        </h1>
+      </div>
+      <div>
+        <h1>{{ favSong.duration_ms }}</h1>
+      </div>
+      <div class="flex gap-5">
+        <h1>{{ favSong?.album?.release_date }}</h1>
+      </div>
+    </div>
+  </button>
+</div>
+}

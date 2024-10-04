@@ -1,45 +1,33 @@
-<div class="flex items-center justify-between">
+@if (User) {
+<div
+  class="w-full bg-gradient-to-b from-blue-300 h-48 p-4 grid grid-cols-4 gap-24"
+>
+  @for (playlists of PlayLists; track playlists) {
   <div>
-    <h1
-      class="text-white font-bold hover:underline cursor-pointer p-10 text-xl"
+    <button
+      class="hover:bg-gray-400 border w-[23pc] rounded-lg mx-5 p-1"
+      [title]="playlists.Description"
+      [routerLink]="'/favSong/' + playlists.id"
     >
-      Popular artist
-    </h1>
-  </div>
-  <div>
-    <a
-      class="text-[#999] hover:underline font-bold p-10 cursor-pointer"
-      routerLink="/Artists"
-      >Show all</a
-    >
-  </div>
-</div>
-
-<div class="grid grid-cols-6">
-  @for (artist of Artist.slice(0,6); track artist) {
-  <div
-    class="mx-3 rounded-xl cursor-pointer hover:bg-[#121212] transition-all duration-200 py-3"
-    [routerLink]="'/Album/' + artist?.id"
-    (click)="onSubmit(artist?.id!)"
-  >
-    <img
-      src="{{ artist?.images?.slice(0, 1)?.[0]?.url }}"
-      alt=""
-      class="max-w-48 max-h-48 rounded-full m-auto"
-    />
-    <div class="mx-4 flex justify-between">
-      <div>
-        <h1 class="text-white font-bold">{{ artist?.name }}</h1>
-        <h1 class="text-[#aaa]">{{ artist?.type }}</h1>
+      <div class="flex items-center gap-5">
+        <div>
+          <img
+            src="{{ playlists.Image }}"
+            alt="#"
+            class="text-white w-12 rounded-lg"
+          />
+        </div>
+        <div class="text-white">
+          <h1>{{ playlists.Name }}</h1>
+          <h1>{{ User.userName }}</h1>
+        </div>
       </div>
-      <div>
-        <button
-          class="bg-green-500 w-16 h-14 flex justify-center items-center rounded-full -my-6"
-        >
-          <img src="/play.png" alt="" class="w-10" />
-        </button>
-      </div>
-    </div>
+    </button>
   </div>
   }
+</div>
+}
+<div>
+  <app-popular-artist />
+  <app-popular-artist />
 </div>

@@ -1,0 +1,25 @@
+@for (song of Song; track song) {
+<div
+  class="bg-black h-20 w-full flex justify-between items-center p-10 text-white fixed bottom-0"
+>
+  <div class="flex items-center gap-5">
+    <img
+      [src]="song?.album?.images?.slice(0, 1)?.[0]?.url"
+      alt=""
+      class="w-10"
+    />
+    <div>
+      <h1 class="font-bold hover:underline">{{ song.name }}</h1>
+    </div>
+  </div>
+  <div>
+    <h1 class="cursor-pointer hover:underline" (click)="PasueSong()">Pause</h1>
+    <h1
+      class="cursor-pointer hover:underline"
+      (click)="playSong(song.preview_url)"
+    >
+      Play
+    </h1>
+  </div>
+</div>
+}

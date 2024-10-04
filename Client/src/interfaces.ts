@@ -1,13 +1,13 @@
 export interface albumData {
   album: {
     album_type: string;
-    Artists: ArtistData[];
+    Artists: artistDATA[];
     External_urls: {
       spotify: string;
     };
     Href: string;
     Id: string;
-    Images: [
+    images: [
       {
         url: string;
         height: number;
@@ -22,7 +22,7 @@ export interface albumData {
     Type: string;
     Uri: string;
   };
-  artists: ArtistData[];
+  artists: artistDATA[];
 
   disc_number: number;
   duration_ms: number;
@@ -44,7 +44,6 @@ export interface albumData {
   type: string;
   uri: string;
 }
-[];
 
 export interface Album {
   data: {
@@ -105,4 +104,32 @@ export interface artistDATA {
 export interface Artist {
   statusbare: string;
   data: ArtistData[];
+}
+export interface PlayListData {
+  popularity: number;
+  _id: string;
+  Image: string;
+  Name: string;
+  Description: string;
+  id: string;
+}
+
+export interface playList {
+  data: PlayListData[];
+  statusbar: string;
+  message: string;
+  results: number;
+}
+export interface favSongData {
+  data: albumData[];
+  playList: PlayListData;
+}
+export interface favSong {
+  data: favSongData[];
+  statusbar: string;
+  results: number;
+}
+export interface PlayListWithSong {
+  statusbar: string;
+  results: number;
 }

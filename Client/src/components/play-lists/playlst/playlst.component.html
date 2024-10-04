@@ -1,0 +1,27 @@
+<div
+  class="bg-[#222] h-48 p-2 gap-10 flex items-center cursor-pointer"
+  routerLink="form"
+>
+  <div class="bg-[#333] w-32 h-32 flex justify-center items-center rounded-lg">
+    <img src="/music.png" alt="" class="w-20 h-20" />
+  </div>
+  <div class="text-white">
+    <h1 class="font-bold">playlist</h1>
+    <h1 class="font-bold text-6xl">My Playlist #3</h1>
+    <h1 class="my-2">{{ User?.userName }}.</h1>
+  </div>
+</div>
+@if(isformPlayList()){
+<div
+  class="absolute left-0 top-0 flex items-center justify-center h-full w-full bg-[rgb(0,0,0,0.5)]"
+>
+  <div
+    class="bg-[#222] h-[20pc] rounded-xl shadow-lg shadow-black flex justify-center items-center"
+  >
+    <app-form-playlist />
+  </div>
+</div>
+}
+<div class="my-[15pc] mx-10">
+  <app-footer />
+</div>

@@ -1,0 +1,26 @@
+<div class="bg-[#121212] w-[25pc] rounded-lg h-[52pc]">
+  <app-header-library />
+  @for (playlists of PlayLists; track playlists) {
+  <div class="my-4">
+    <button
+      class="hover:bg-[#333] w-[23pc] rounded-lg mx-5 p-1"
+      [title]="playlists.Description"
+      [routerLink]="'/favSong/' + playlists.id"
+    >
+      <div class="flex items-center gap-5">
+        <div>
+          <img
+            src="{{ playlists.Image }}"
+            alt="#"
+            class="text-white w-12 rounded-lg"
+          />
+        </div>
+        <div class="text-white">
+          <h1>{{ playlists.Name }}</h1>
+          <h1>{{ User.userName }}</h1>
+        </div>
+      </div>
+    </button>
+  </div>
+  }
+</div>

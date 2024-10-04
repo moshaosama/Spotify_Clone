@@ -1,5 +1,7 @@
 const express = require("express");
-const SpotifyController = require("../Controller/ArtistController");
+const SpotifyController = require("../Controller/PostToDBController");
+const artistController = require("../Controller/ArtistController");
+const albunController = require("../Controller/AlbumController");
 const SpotifyRouter = express.Router();
 const artistRouter = express.Router();
 const albumRouter = express.Router();
@@ -10,11 +12,11 @@ SpotifyRouter.route("/Artist/:Song").get(
   SpotifyController.postArtistOnDb
 );
 
-artistRouter.route("/").get(SpotifyController.getArtist);
+artistRouter.route("/").get(artistController.getArtist);
 albumRouter
   .route("/:id")
   .get(SpotifyController.getAccessToken, SpotifyController.postAlbumToDb);
 
-albumRouter.route("/").get(SpotifyController.getAlbum);
+albumRouter.route("/").get(albunController.getAlbum);
 
 module.exports = { SpotifyRouter, artistRouter, albumRouter };

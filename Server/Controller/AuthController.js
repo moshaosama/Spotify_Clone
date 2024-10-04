@@ -87,6 +87,13 @@ exports.Protect = async (req, res, next) => {
   }
   token = req.headers.authorization;
 
+  if (!token) {
+    return res.status(403).json({
+      statusbar: "Access Denied",
+      message: "you Don't have Token",
+    });
+  }
+
   const decoded = JWT.verify(token, process.env.SecretJWT, {
     expiresIn: process.env.EXPIRETOKEN,
   });
@@ -96,6 +103,9 @@ exports.Protect = async (req, res, next) => {
       message: "you don't have any token",
     });
   }
+  console.log("====================================");
+  console.log(token);
+  console.log("====================================");
 
   const user = await User.findById(decoded?.id);
   req.user = user;

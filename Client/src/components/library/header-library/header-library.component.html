@@ -1,0 +1,28 @@
+<div class="flex justify-between items-center">
+  <div class="flex items-center mx-5 cursor-pointer my-2">
+    <svg
+      data-encore-id="icon"
+      role="img"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      class="Svg-sc-ytk21e-0 bneLcE w-10"
+    >
+      <path
+        d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"
+      ></path>
+    </svg>
+    <p
+      class="text-[#bbb] font-bold mx-2 hover:text-white transition-all duration-200"
+    >
+      Your Library
+    </p>
+  </div>
+  <div>
+    <p
+      class="font-bold text-[#bbb] cursor-pointer mx-5 hover:bg-[#333333] transition-all duration-200 w-5 text-center rounded-full"
+      [routerLink]="Token ? '/playlist' : '/login'"
+    >
+      +
+    </p>
+  </div>
+</div>

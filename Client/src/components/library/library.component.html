@@ -1,0 +1,19 @@
+<div class="flex">
+  @if(isLogin()) { @if(isPlayLists()) {
+  <app-content-library />
+  }
+  <!-- /////////////////////////////// -->
+  @else {
+  <app-play-lists />
+  }
+  <!-- /////////////////////////////////// -->
+  } @else {
+  <app-content-library />
+  }
+  <div
+    class="mx-2 rounded bg-[#333333] w-full overflow-y-scroll h-[52pc]"
+    id="Content"
+  >
+    <router-outlet />
+  </div>
+</div>

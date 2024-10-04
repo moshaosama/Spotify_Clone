@@ -1,8 +1,68 @@
-@for (albums of Albums; track albums) {
-<audio controls>
-  <source [src]="albums.preview_url" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
-}
+@for (artist of Artist; track artist) {
 
-<button (click)="onSubmit()">Mosha</button>
+<app-header-album
+  [Image]="artist?.images?.slice(0, 1)?.[0]?.url!"
+  [Popularity]="artist.popularity"
+  [Name]="artist.name"
+  Status="Verified Artist"
+  [Description]="artist.popularity * 1000 + '  ' + 'monthly listeners'"
+/>
+} @for (albums of Albums; track albums) {
+<div class="flex items-center my-5 mx-5 w-fit">
+  <div (click)="getSong(albums.id)">
+    <button
+      class="text-white w-[55pc] h-10"
+      (click)="playSound(albums.preview_url)"
+    >
+      <div
+        class="flex justify-between items-center hover:bg-[#161616] rounded-lg p-[10px]"
+        (click)="setActive(albums.id)"
+      >
+        <div
+          class="flex items-center gap-4"
+          [class.active]="activeButton === albums.id"
+        >
+          {{ albums.id.slice(0, 1) }}
+          <img
+            [src]="albums?.album?.images?.slice(0, 1)?.[0]?.url"
+            alt="album.png"
+            class="w-10 rounded-lg"
+          />
+          <h1
+            class="text-white hover:underline"
+            (click)="setActive(albums.id)"
+            [class.active]="activeButton === albums.id"
+          >
+            {{ albums.name }}
+          </h1>
+        </div>
+        <div>
+          <h1>{{ albums.duration_ms }}</h1>
+        </div>
+        <div>
+          <div class="flex gap-5">
+            <h1>{{ albums?.album?.release_date }}</h1>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class="flex justify-center items-center rounded-xl hover:bg-green-500 w-10 h-10 cursor-pointer"
+    routerLink="formFavSong"
+    (click)="onCLick(albums.name)"
+  >
+    <button>
+      <img src="/plus.png" alt="plus.png" class="w-4" />
+    </button>
+  </div>
+</div>
+@if (isFormFavSong()) {
+<div
+  class="absolute top-0 text-white flex items-center justify-center h-full w-1/2"
+>
+  <div class="bg-[#161616] rounded-xl shadow-black shadow-xl">
+    <app-form-fav-song />
+  </div>
+</div>
+} }

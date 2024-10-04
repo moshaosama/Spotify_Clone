@@ -1,0 +1,47 @@
+<div class="mx-10">
+  <div class="flex justify-between">
+    <div class="text-white font-bold text-lg">
+      <h1>Edit Details</h1>
+    </div>
+    <div routerLink="/playlist" class="cursor-pointer">
+      <img src="/reject.png" alt="" class="w-7" />
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="flex gap-5 cursor-pointer">
+      <!-- <div
+        class="bg-[#333] w-56 h-44 flex justify-center items-center shadow-black shadow-2xl rounded-lg"
+      >
+        <img src="/music.png" alt="" class="w-20 h-20" />
+      </div> -->
+      <input
+        type="file"
+        name="Image"
+        formControlNam="Image"
+        (change)="onChangeImage($event)"
+      />
+      <div>
+        <input
+          type="text"
+          name="Name"
+          class="bg-[#333] text-white rounded-lg w-full h-10 px-3"
+          placeholder="Playlist #3"
+          formControlName="Name"
+        />
+        <input
+          class="my-4 h-32 rounded-lg bg-[#333] w-full p-2 placeholder:text-[#666]"
+          name="Description"
+          formControlName="Description"
+        />
+      </div>
+    </div>
+    <div>
+      <button
+        class="bg-white w-20 h-10 rounded-xl font-bold hover:text-lg transition-all duration-200"
+        (click)="onSave()"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

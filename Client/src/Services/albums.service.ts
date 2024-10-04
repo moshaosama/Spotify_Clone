@@ -7,9 +7,19 @@ import { ActivatedRoute } from '@angular/router';
   providedIn: 'root',
 })
 export class AlbumsService {
+  // Dependency injection
   httpClient = inject(HttpClient);
   routes = inject(ActivatedRoute);
+  // Variables
   public Albums: albumData[] = [];
+  name: string = '';
+  progress_Bar = 0;
+  activeButton: string = '';
+  Song: albumData[] | null = null;
+  private currentAudio: HTMLAudioElement | null = null;
+  audio = new Audio();
+  nameSong: string = '';
+  // Methods
   constructor() {
     this.httpClient.get<Album>('http://localhost:4000/Album').subscribe({
       next: (val) => {
@@ -30,5 +40,28 @@ export class AlbumsService {
         window.location.reload();
       },
     });
+  }
+  getSong(id: string) {
+    this.Song = this.Albums?.filter((el) => el.id === id);
+  }
+  playSound(src: string) {
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+    this.audio.src = src;
+    this.audio.load();
+    this.audio.play();
+
+    this.currentAudio = this.audio;
+  }
+  PauseSong() {
+    this.audio.pause();
+  }
+  playSong(src: string) {
+    this.audio.play();
+  }
+  onCLick(Name: string) {
+    this.name = Name;
   }
 }

@@ -1,0 +1,37 @@
+<div class="p-10 bg-[#161616] rounded-xl text-white">
+  <div class="flex justify-between">
+    <h1>PlayListsName</h1>
+    <img
+      src="reject.png"
+      alt="reject.png"
+      class="w-10"
+      [routerLink]="'/Album/' + id"
+    />
+  </div>
+  @for (playlists of PlayLists; track playlists?._id) {
+  <div
+    class="my-4"
+    (click)="postFavSong(playlists._id)"
+    [routerLink]="'/favSong/' + playlists.id"
+  >
+    <button
+      class="hover:bg-[#333] w-[23pc] rounded-lg mx-5 p-1"
+      [title]="playlists.Description"
+    >
+      <div class="flex items-center gap-5">
+        <div>
+          <img
+            src="{{ playlists.Image }}"
+            alt="#"
+            class="text-white w-12 rounded-lg"
+          />
+        </div>
+        <div class="text-white">
+          <h1>{{ playlists.Name }}</h1>
+          <h1>{{ User.userName }}</h1>
+        </div>
+      </div>
+    </button>
+  </div>
+  }
+</div>
